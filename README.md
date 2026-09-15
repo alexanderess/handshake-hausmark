@@ -50,21 +50,39 @@ and the spreadsheet read as one system: `#121621` Hausmark ink, `#4E36F5` Handsh
 `#8B5CF6` violet (critical-pillar marker), and the workbook's conditional-formatting
 green / amber / red for Yes / Partially / No.
 
+## Sourcing of the Handshake content
+
+Direct HTTP access to `handshake.finance` is blocked by the build environment's network egress
+proxy, so the pages could not be read first-hand. The escrow section was instead written from
+web-search results summarising Handshake's own pages. Every claim on the page traces to one of:
+
+| Claim on the page | Source |
+| --- | --- |
+| Funds held in a MAS-regulated escrow account at DBS | `handshake.finance/home-owner/`, `/mas-escrow-singapore-interior-design-construction/` |
+| Dedicated custodian accounts, fully segregated client accounts | `handshake.finance/home-owner/` |
+| Released only on the homeowner's approval of each milestone | `handshake.finance/home-owners/` |
+| Disputes freeze the funds; no unilateral access | `handshake.finance/home-owner/` |
+| Structured negotiation / mediation / arbitration, timelines set in advance | `handshake.finance/home-owners/` |
+| CASE / Small Claims Tribunal / court may still follow | `handshake.finance/home-owners/` |
+| No legitimate reason for a deposit above 20%; 4–5 stages, 10–15% upfront | `handshake.finance/renovation-deposit-singapore/` |
+| Renovation insurance excludes deposit loss, contractor default, payment disputes, incomplete works | `handshake.finance/renovation-insurance-singapore/` |
+| No licensing regime for interior design in Singapore | Handshake pre-seed announcement, June 2026 |
+| The ID invites the homeowner to the project | `handshake.finance/interior-designers/` |
+
 ## Before this goes live
 
-`handshake.finance` was unreachable from the build environment (blocked by the network egress
-proxy), so the Handshake-side content could not be checked against the live site. Please verify
-before publishing:
-
-1. **Renovation Safeguard specifics.** The paragraph in the `#escrow` section describes escrow
-   mechanics only — it deliberately states no coverage amounts, percentages, fees, timeframes
-   or guarantees, because none could be confirmed. Add the real product specifics. The block is
-   marked with a `NEEDS VERIFICATION` comment in `index.html`.
-2. **Handshake brand assets.** The co-brand lockup is currently a typographic wordmark. Swap in
-   the real Handshake logo and confirm the accent hex against the brand guidelines.
-3. **Hausmark brand assets.** Same — replace the `Hausmark.` wordmark with the real mark, and
+1. **Check the wording against the live pages.** The facts above came from search summaries, not
+   from reading the pages directly. Confirm the exact figures and phrasing before publishing.
+2. **"Renovation Safeguard" as a product name could not be confirmed.** No search result mentions
+   it. The name is used here because it was specified in the brief; the substance underneath it is
+   sourced as above. Confirm it is the correct public name for the offering.
+3. **The ID Directory could not be confirmed either.** `handshake.finance/iddirectory-onboarding`
+   returned no search results, and the designer-facing page that does surface is
+   `handshake.finance/interior-designers/`. The footer currently links to the onboarding URL from
+   the brief — confirm that is the live destination.
+4. **Handshake brand assets.** The co-brand lockup is a typographic wordmark. Swap in the real
+   Handshake logo and confirm the accent hex against the brand guidelines.
+5. **Hausmark brand assets.** Same — replace the `Hausmark.` wordmark with the real mark, and
    confirm whether the Hausmark Seal has an official badge to show on pillar 10.
-4. **"RCCS" expansion.** Deliberately never spelled out on the page, since the workbook does not
-   define the acronym. Expand it if there is an official wording.
-5. **ID Directory link.** The footer links to `handshake.finance/iddirectory-onboarding` as the
-   designer-side call to action — confirm that is the right destination.
+6. **"RCCS" expansion.** Deliberately never spelled out, since the workbook does not define the
+   acronym. Expand it if there is an official wording.

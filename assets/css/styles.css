@@ -231,7 +231,7 @@ button { font: inherit; color: inherit; }
 
 .section__head { max-width: 66ch; margin-bottom: 30px; }
 .section__head h2 { margin-top: 13px; font-size: clamp(1.5rem, 1.1rem + 1.3vw, 1.95rem); font-weight: 700; }
-.section__head p { color: var(--text-2); margin-block: 14px 0; font-size: 15.5px; }
+.section__head p:not(.eyebrow) { color: var(--text-2); margin-block: 14px 0; font-size: 15.5px; }
 
 /* ------------------------------------------------------ tool layout ---- */
 
@@ -383,7 +383,7 @@ button { font: inherit; color: inherit; }
 
 .subsection { margin-top: 38px; border-top: 1px solid var(--border); padding-top: 32px; }
 .subsection h3 { margin-top: 12px; font-size: 1.3rem; font-weight: 700; }
-.subsection > p { margin: 11px 0 0; color: var(--text-2); font-size: 14px; max-width: 66ch; }
+.subsection > p:not(.eyebrow) { margin: 11px 0 0; color: var(--text-2); font-size: 14px; max-width: 66ch; }
 
 .bd-rows { display: flex; flex-direction: column; gap: 3px; margin-top: 20px; }
 .bd-row { display: grid; grid-template-columns: 24px minmax(120px, 1.5fr) minmax(0, 3fr) 70px; align-items: center; gap: 14px; padding: 9px 10px; border-radius: var(--radius-sm); font-size: 13.5px; }
@@ -563,8 +563,8 @@ button { font: inherit; color: inherit; }
 
 /* Framework introduction, ahead of the assessment. */
 .rccs-intro { max-width: 70ch; padding-bottom: 32px; margin-bottom: 34px; border-bottom: 1px solid var(--border); }
-.rccs-intro h2 { font-size: clamp(1.5rem, 1.1rem + 1.3vw, 1.95rem); font-weight: 700; }
-.rccs-intro p { color: var(--text-2); font-size: 15.5px; line-height: 1.68; margin: 16px 0 0; }
+.rccs-intro h2 { margin-top: 13px; font-size: clamp(1.5rem, 1.1rem + 1.3vw, 1.95rem); font-weight: 700; }
+.rccs-intro p:not(.eyebrow) { color: var(--text-2); font-size: 15.5px; line-height: 1.68; margin: 16px 0 0; }
 
 @media (max-width: 680px) {
   .score-guide__row { grid-template-columns: minmax(0, 1fr); gap: 4px; }

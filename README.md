@@ -113,5 +113,5 @@ web-search results summarising Handshake's own pages. Every claim on the page tr
    Handshake logo and confirm the accent hex against the brand guidelines.
 5. **Hausmark brand assets.** Same — replace the `Hausmark.` wordmark with the real mark, and
    confirm whether the Hausmark Seal has an official badge to show on pillar 10.
-6. **"RCCS" expansion.** Deliberately never spelled out, since the workbook does not define the
-   acronym. Expand it if there is an official wording.
+6. **"RCCS" expansion.** Confirmed as the Hausmark Renovation Consumer Confidence Score, and
+   carried above the "About the RCCS" heading.

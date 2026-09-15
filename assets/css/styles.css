@@ -168,21 +168,25 @@ button { font: inherit; color: inherit; }
 
 /* Co-brand lockup: Hausmark owns the framework, Handshake owns the escrow.
    The rule between them carries that relationship. */
-.lockup { display: flex; align-items: center; gap: 13px; }
+/* Co-brand lockup. Each brand is an <img> slot with a light and a dark file,
+   swapped by theme in CSS — dropping the real wordmarks in means replacing four
+   files in assets/img/ and changing no markup. */
+.lockup { display: flex; align-items: center; gap: 14px; }
 
-.lockup__mark {
-  font-family: var(--font-display);
-  font-size: 19px;
-  font-weight: 600;
-  letter-spacing: -.015em;
-  color: var(--ink);
-  line-height: 1;
+.brand-logo { display: block; height: 22px; width: auto; }
+.brand-logo--dark { display: none; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .brand-logo--light { display: none; }
+  :root:not([data-theme="light"]) .brand-logo--dark  { display: block; }
 }
-.lockup__mark span { color: var(--indigo); }
+:root[data-theme="dark"] .brand-logo--light { display: none; }
+:root[data-theme="dark"] .brand-logo--dark  { display: block; }
 
 .lockup__rule {
   width: 1px; height: 22px;
   background: var(--line);
+  flex: none;
 }
 
 .lockup__partner {
@@ -192,9 +196,11 @@ button { font: inherit; color: inherit; }
   text-transform: uppercase;
   color: var(--text-3);
   line-height: 1.35;
-  max-width: 15ch;
 }
 .lockup__partner b { color: var(--text-2); font-weight: 600; }
+
+/* Footer lockup sits a touch larger. */
+.site-footer .brand-logo { height: 24px; }
 
 .header-tools { margin-left: auto; display: flex; align-items: center; gap: 8px; }
 

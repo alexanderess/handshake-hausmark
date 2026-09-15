@@ -563,7 +563,7 @@ button { font: inherit; color: inherit; }
 
 /* Framework introduction, ahead of the assessment. */
 .rccs-intro { max-width: 70ch; padding-bottom: 32px; margin-bottom: 34px; border-bottom: 1px solid var(--border); }
-.rccs-intro h2 { margin-top: 13px; font-size: clamp(1.5rem, 1.1rem + 1.3vw, 1.95rem); font-weight: 700; }
+.rccs-intro h2 { font-size: clamp(1.5rem, 1.1rem + 1.3vw, 1.95rem); font-weight: 700; }
 .rccs-intro p { color: var(--text-2); font-size: 15.5px; line-height: 1.68; margin: 16px 0 0; }
 
 @media (max-width: 680px) {

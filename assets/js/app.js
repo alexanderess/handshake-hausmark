@@ -89,34 +89,6 @@
     return { state: 'clear', title: 'No critical red flags', body: 'Pillars 6 and 11 both scored Yes / Good.' };
   }
 
-  /* The single most valuable thing left to do: the unanswered pillar
-     carrying the most weight, or the biggest recoverable gap once complete. */
-  function nextAction(firm) {
-    var open = PILLARS.filter(function (p) { return firm.answers[p.n] == null; });
-    if (open.length) {
-      open.sort(function (a, b) { return b.weight - a.weight || a.n - b.n; });
-      var p = open[0];
-      return {
-        label: 'Answer next',
-        text: 'Pillar ' + p.n + ' · ' + p.name + ' carries ' + Math.round(p.weight * 100) +
-              ' of the 100 points — the most of anything you have left.'
-      };
-    }
-    var lost = PILLARS.map(function (p) {
-      return { p: p, gap: p.weight * 100 - pointsFor(p, firm.answers[p.n]) };
-    }).filter(function (x) { return x.gap > 0; }).sort(function (a, b) { return b.gap - a.gap; });
-
-    if (!lost.length) {
-      return { label: 'Complete', text: 'Every pillar scored Yes / Good. Keep the escrow arrangement in writing before you pay a deposit.' };
-    }
-    var top = lost[0];
-    return {
-      label: 'Biggest gap',
-      text: 'Pillar ' + top.p.n + ' · ' + top.p.name + ' cost you ' + fmt(top.gap) +
-            ' points. Ask them to close it, then re-score.'
-    };
-  }
-
   function fmt(n) {
     return (Math.round(n * 10) / 10).toString().replace(/\.0$/, '');
   }
@@ -201,6 +173,17 @@
     render();
   }
 
+  function removeFirm(i) {
+    if (state.firms.length < 2) return;
+    var name = state.firms[i].name || 'this firm';
+    if (!confirm('Remove ' + name + ' and its answers?')) return;
+    state.firms.splice(i, 1);
+    if (state.active >= state.firms.length) state.active = state.firms.length - 1;
+    else if (state.active > i) state.active--;
+    save();
+    render();
+  }
+
   /* ---------------------------------------------------------- rendering -- */
 
   function render() {
@@ -230,6 +213,26 @@
       tab.appendChild(pill);
 
       tab.addEventListener('click', function () { state.active = i; save(); render(); });
+
+      /* Each added firm carries its own remove control, so getting rid of one
+         never means selecting it first. */
+      if (state.firms.length > 1) {
+        var x = el('span', 'firm-tab__x', '\u00D7');
+        x.setAttribute('role', 'button');
+        x.setAttribute('tabindex', '0');
+        x.title = 'Remove ' + (f.name || 'this firm');
+        x.setAttribute('aria-label', x.title);
+        var kill = function (ev) {
+          ev.stopPropagation();
+          removeFirm(i);
+        };
+        x.addEventListener('click', kill);
+        x.addEventListener('keydown', function (ev) {
+          if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); kill(ev); }
+        });
+        tab.appendChild(x);
+      }
+
       host.appendChild(tab);
     });
 
@@ -296,9 +299,6 @@
     $('#v-flag-title').textContent = fc.title;
     $('#v-flag-body').textContent = fc.body;
 
-    var na = nextAction(firm);
-    $('#v-nudge-label').textContent = na.label;
-    $('#v-nudge-text').textContent = na.text;
   }
 
   function renderBreakdown(firm) {
@@ -411,14 +411,7 @@
       $('#firm-name').focus();
     });
 
-    $('#remove-firm').addEventListener('click', function () {
-      if (state.firms.length < 2) return;
-      var name = state.firms[state.active].name || 'this firm';
-      if (!confirm('Remove ' + name + ' and its answers?')) return;
-      state.firms.splice(state.active, 1);
-      state.active = Math.max(0, state.active - 1);
-      save(); render();
-    });
+    $('#remove-firm').addEventListener('click', function () { removeFirm(state.active); });
 
     $('#clear-sample').addEventListener('click', startFresh);
     $('#reset').addEventListener('click', function () {

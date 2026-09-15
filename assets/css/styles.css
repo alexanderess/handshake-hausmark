@@ -503,3 +503,16 @@ button { font: inherit; color: inherit; }
   .tool { grid-template-columns: minmax(0, 1fr) 280px; }
   .pillar { break-inside: avoid; }
 }
+
+/* Per-firm remove control on the tab. */
+.firm-tab__x {
+  display: inline-grid; place-items: center;
+  width: 18px; height: 18px; margin-right: -4px;
+  border-radius: 50%;
+  font-size: 15px; line-height: 1;
+  color: var(--text-3);
+  cursor: pointer;
+  transition: background .14s ease, color .14s ease;
+}
+.firm-tab__x:hover { background: var(--bad-bg); color: var(--bad); }
+.firm-tab__x:focus-visible { outline: 2px solid var(--violet-600); outline-offset: 1px; }

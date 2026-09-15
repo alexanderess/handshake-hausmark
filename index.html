@@ -12,32 +12,27 @@
 </head>
 <body>
 
-<header class="site-header">
-  <div class="wrap">
-    <!-- Co-brand lockup: Hausmark owns the assessment framework, Handshake owns
-         the escrow rail. The hairline rule carries that relationship. -->
-    <div class="lockup">
-      <img class="brand-logo brand-logo--hausmark brand-logo--light" src="assets/img/hausmark-logo.svg" alt="Hausmark" width="200" height="32">
-      <img class="brand-logo brand-logo--hausmark brand-logo--dark"  src="assets/img/hausmark-logo-dark.svg" alt="" aria-hidden="true" width="200" height="32">
-      <div class="lockup__rule" aria-hidden="true"></div>
-      <img class="brand-logo brand-logo--handshake brand-logo--light" src="assets/img/handshake-logo.svg" alt="Handshake" width="220" height="32">
-      <img class="brand-logo brand-logo--handshake brand-logo--dark"  src="assets/img/handshake-logo-dark.svg" alt="" aria-hidden="true" width="220" height="32">
-    </div>
-    <div class="header-tools">
-      <button type="button" class="btn btn--ghost btn--sm" id="print">Print / save PDF</button>
-      <button type="button" class="btn btn--primary btn--sm" id="copy">Copy summary</button>
-    </div>
-  </div>
-</header>
-
 <main>
   <div class="wrap shell">
 
     <!-- ================================================== assessment card -- -->
     <section class="card" id="assess">
 
-      <!-- Handshake's signature gradient band, carrying the live progress the
-           way their onboarding form carries "Step 1 of 2". -->
+      <!-- The reference puts the logo on a white strip above the gradient band. -->
+      <div class="card-head">
+        <div class="lockup">
+          <img class="brand-logo brand-logo--hausmark" src="assets/img/hausmark-logo.png"
+               alt="Hausmark — the benchmark for renovation trust" width="398" height="98">
+          <span class="lockup__rule" aria-hidden="true"></span>
+          <img class="brand-logo brand-logo--handshake" src="assets/img/handshake-logo.png"
+               alt="Handshake" width="1401" height="186">
+        </div>
+        <div class="card-head__tools">
+          <button type="button" class="btn btn--ghost btn--sm" id="print">Print / save PDF</button>
+          <button type="button" class="btn btn--primary btn--sm" id="copy">Copy summary</button>
+        </div>
+      </div>
+
       <div class="band">
         <p class="eyebrow">Hausmark RCCS &times; Handshake</p>
         <h1>Score your ID before you sign the quote.</h1>
@@ -50,19 +45,13 @@
 
         <div class="band__progress">
           <div class="band__track">
-            <div class="band__fill" id="band-fill"></div>
+            <div class="band__seg"><div class="band__fill" id="band-fill"></div></div>
+            <div class="band__seg"></div>
           </div>
           <div class="band__meta">
             <span id="band-step">0 of 11 answered</span>
             <span class="band__score" id="band-score">&mdash; <small>/ 100</small></span>
           </div>
-        </div>
-
-        <div class="band__stats">
-          <div class="band__stat"><b>11</b><span>weighted pillars</span></div>
-          <div class="band__stat"><b>2</b><span>critical red flags</span></div>
-          <div class="band__stat"><b>3</b><span>firms side by side</span></div>
-          <div class="band__stat"><b>~4</b><span>minutes</span></div>
         </div>
       </div>
 
@@ -317,22 +306,13 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    <div>
-      <div class="lockup" style="margin-bottom:14px">
-        <img class="brand-logo brand-logo--hausmark brand-logo--light" src="assets/img/hausmark-logo.svg" alt="Hausmark" width="200" height="32">
-        <img class="brand-logo brand-logo--hausmark brand-logo--dark"  src="assets/img/hausmark-logo-dark.svg" alt="" aria-hidden="true" width="200" height="32">
-        <div class="lockup__rule" aria-hidden="true"></div>
-        <img class="brand-logo brand-logo--handshake brand-logo--light" src="assets/img/handshake-logo.svg" alt="Handshake" width="220" height="32">
-        <img class="brand-logo brand-logo--handshake brand-logo--dark"  src="assets/img/handshake-logo-dark.svg" alt="" aria-hidden="true" width="220" height="32">
-      </div>
+    <div class="inner">
       <p>
-        The Hausmark RCCS framework ·
+        The Hausmark RCCS framework &middot;
         <a href="https://www.hausmark.com.sg">hausmark.com.sg</a><br>
-        Escrow payments in partnership with Handshake ·
+        Escrow payments in partnership with Handshake &middot;
         <a href="https://handshake.finance">handshake.finance</a>
       </p>
-    </div>
-    <div>
       <p>
         Are you an interior designer? Join the<br>
         <a href="https://handshake.finance/iddirectory-onboarding">Handshake ID Directory</a>

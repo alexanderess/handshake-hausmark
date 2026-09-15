@@ -45,43 +45,39 @@ python3 -m http.server 8000
 
 ## Design system
 
-The frontend is matched to the Handshake product UI (reference: the ID Directory onboarding
-form). The characteristics carried across:
+Colours, spacing and type are **sampled pixel by pixel from the Handshake ID Directory
+onboarding page**, not approximated. Measured values:
 
-- **A violet gradient band** across the top of a white card, the way their onboarding form
-  headers each step. Here it carries the live assessment progress instead of "Step 1 of 2".
-- **White rounded cards** (22px radius) on a light grey ground, with soft shadows.
-- **One typeface** — Plus Jakarta Sans, 400 to 800. No serif, no mono; numerals use
-  `font-variant-numeric: tabular-nums` so scores stay aligned in columns.
-- **Violet uppercase section labels**, bold and letterspaced.
-- **Pale-lavender notice boxes** with a violet hairline border.
-- **Inputs** at 10px radius with a hairline border and a violet focus ring, and red required
-  asterisks.
-
-Tokens live at the top of `assets/css/styles.css`:
-
-| Token | Light | Purpose |
+| Token | Value | Sampled from |
 | --- | --- | --- |
-| `--violet` | `#7B2FF2` | primary accent |
-| `--violet-mark` | `#9B5CE6` | Handshake logo purple |
-| `--ink` | `#150B35` | Handshake wordmark near-black |
-| `--band-from` / `--band-to` | `#7B2FF2` → `#8F4BF6` | the gradient band |
-| `--hausmark-red` | `#DE1F26` | Hausmark mark only |
+| `--violet-500` | `#8B5CF6` | gradient, left edge of the band |
+| `--violet-700` | `#6D28D9` | gradient, right edge of the band |
+| `--violet-600` | `#7C3AED` | the "YOUR FIRM" section label |
+| `--violet-50` | `#F7F3FF` | notice-box fill |
+| `--violet-line` | `#E5DFF1` | notice-box border |
+| `--border` | `#E5E7EB` | input borders |
+| `--page` | `#F9FBFC` | page ground behind the card |
+| `--text-3` | `#9CA3AF` | input placeholder |
+| `--pad` | `45px` | card gutter |
 
-Two notes on the token structure. `--band-from`, `--band-to` and `--btn-bg` are deliberately
-separate from the violet scale: that scale lightens for dark mode, which washed out any surface
-carrying white text. And Hausmark red is never used as UI chrome — only inside the Hausmark mark
-itself — so it can never be confused with the red "High risk" state.
+The gradient runs light-to-dark left-to-right, which is the opposite of the usual assumption.
+Layout carried across: a white logo strip above the gradient band, both inside a rounded white
+card on a grey ground; a two-segment progress rail; a pale-lavender notice; violet uppercase
+section labels; 8px inputs with a violet focus ring and red required asterisks.
+
+**Single light theme.** There is no dark mode and no `prefers-color-scheme` or `data-theme`
+code anywhere in the stylesheet — `color-scheme: light` is declared so a dark-mode browser
+cannot force one.
 
 ## Logos
 
-`assets/img/` holds four files: a light and a dark variant for each brand, swapped by CSS at
-`.brand-logo--light` / `.brand-logo--dark`. Replacing a logo means replacing files, not markup.
+`assets/img/` holds the real supplied assets, not recreations:
 
-**These are recreations, traced by eye from supplied images, not the real brand assets.** The
-Handshake mark's geometry is close and the Hausmark seal is approximate; both wordmarks fall back
-to system faces because an SVG loaded through `<img>` cannot use the page's webfont. Replace all
-four with the official files before this goes anywhere public.
+- `hausmark-logo.png` — 398×98 RGBA, trimmed to content.
+- `handshake-logo.png` — 1401×186 RGBA, converted from the supplied JPEG with its light ground
+  keyed out to transparency and the antialiased rim feathered, so it sits cleanly on white.
+
+Both are plain `<img>` tags sized by CSS height, so replacing either is a file swap.
 
 ## Sourcing of the Handshake content
 

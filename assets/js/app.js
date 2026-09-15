@@ -173,10 +173,30 @@
     render();
   }
 
+  /* Published artifacts run in a sandboxed iframe without allow-modals, where
+     window.confirm() is ignored and returns false. Destructive actions confirm
+     in-page instead. */
+  var pendingRemove = null;
+  var pendingTimer = null;
+
+  function armRemove(i) {
+    clearTimeout(pendingTimer);
+    pendingRemove = i;
+    render();
+    pendingTimer = setTimeout(cancelRemove, 5000);
+  }
+
+  function cancelRemove() {
+    clearTimeout(pendingTimer);
+    if (pendingRemove === null) return;
+    pendingRemove = null;
+    render();
+  }
+
   function removeFirm(i) {
+    clearTimeout(pendingTimer);
+    pendingRemove = null;
     if (state.firms.length < 2) return;
-    var name = state.firms[i].name || 'this firm';
-    if (!confirm('Remove ' + name + ' and its answers?')) return;
     state.firms.splice(i, 1);
     if (state.active >= state.firms.length) state.active = state.firms.length - 1;
     else if (state.active > i) state.active--;
@@ -202,33 +222,50 @@
 
     state.firms.forEach(function (f, i) {
       var s = scoreOf(f);
+      var label = f.name || ('ID Firm ' + String.fromCharCode(65 + i));
+
+      if (pendingRemove === i) {
+        var ask = el('span', 'firm-tab firm-tab--confirm');
+        ask.appendChild(el('span', 'firm-tab__name', 'Remove ' + label + '?'));
+
+        var yes = el('button', 'firm-tab__yes', 'Remove');
+        yes.type = 'button';
+        yes.addEventListener('click', function (ev) { ev.stopPropagation(); removeFirm(i); });
+        ask.appendChild(yes);
+
+        var no = el('button', 'firm-tab__no', 'Keep');
+        no.type = 'button';
+        no.addEventListener('click', function (ev) { ev.stopPropagation(); cancelRemove(); });
+        ask.appendChild(no);
+
+        host.appendChild(ask);
+        return;
+      }
+
       var tab = el('button', 'firm-tab');
       tab.type = 'button';
       tab.setAttribute('role', 'tab');
       tab.setAttribute('aria-selected', String(i === state.active));
-      tab.appendChild(el('span', 'firm-tab__name', f.name || ('ID Firm ' + String.fromCharCode(65 + i))));
+      tab.appendChild(el('span', 'firm-tab__name', label));
 
       var pill = el('span', 'firm-tab__score', s.answered ? fmt(s.total) : '—');
       if (s.complete) pill.dataset.band = bandOf(s.total).key;
       tab.appendChild(pill);
 
-      tab.addEventListener('click', function () { state.active = i; save(); render(); });
+      tab.addEventListener('click', function () { cancelRemove(); state.active = i; save(); render(); });
 
-      /* Each added firm carries its own remove control, so getting rid of one
-         never means selecting it first. */
+      /* Each added firm carries its own remove control, so removing one never
+         means selecting it first. */
       if (state.firms.length > 1) {
         var x = el('span', 'firm-tab__x', '\u00D7');
         x.setAttribute('role', 'button');
         x.setAttribute('tabindex', '0');
-        x.title = 'Remove ' + (f.name || 'this firm');
+        x.title = 'Remove ' + label;
         x.setAttribute('aria-label', x.title);
-        var kill = function (ev) {
-          ev.stopPropagation();
-          removeFirm(i);
-        };
-        x.addEventListener('click', kill);
+        var arm = function (ev) { ev.stopPropagation(); armRemove(i); };
+        x.addEventListener('click', arm);
         x.addEventListener('keydown', function (ev) {
-          if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); kill(ev); }
+          if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); arm(ev); }
         });
         tab.appendChild(x);
       }
@@ -414,8 +451,24 @@
     $('#remove-firm').addEventListener('click', function () { removeFirm(state.active); });
 
     $('#clear-sample').addEventListener('click', startFresh);
-    $('#reset').addEventListener('click', function () {
-      if (!confirm('Clear every answer for every firm and start again?')) return;
+    var resetArmed = false, resetTimer = null;
+    $('#reset').addEventListener('click', function (e) {
+      var btn = e.currentTarget;
+      if (!resetArmed) {
+        resetArmed = true;
+        btn.textContent = 'Confirm clear';
+        btn.classList.add('btn--danger');
+        resetTimer = setTimeout(function () {
+          resetArmed = false;
+          btn.textContent = 'Clear all';
+          btn.classList.remove('btn--danger');
+        }, 5000);
+        return;
+      }
+      clearTimeout(resetTimer);
+      resetArmed = false;
+      btn.textContent = 'Clear all';
+      btn.classList.remove('btn--danger');
       state = { firms: [{ name: '', answers: {} }], active: 0 };
       save(); render();
       $('#firm-name').focus();

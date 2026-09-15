@@ -43,12 +43,45 @@ python3 -m http.server 8000
 | `assets/js/data.js` | The 11 pillars, weights, scoring descriptors, bands, worked example |
 | `assets/js/app.js` | Scoring, red-flag logic, rendering, persistence |
 
-## Design tokens
+## Design system
 
-The palette is lifted from the source workbook's own cell fills and font colours, so the page
-and the spreadsheet read as one system: `#121621` Hausmark ink, `#4E36F5` Handshake indigo,
-`#8B5CF6` violet (critical-pillar marker), and the workbook's conditional-formatting
-green / amber / red for Yes / Partially / No.
+The frontend is matched to the Handshake product UI (reference: the ID Directory onboarding
+form). The characteristics carried across:
+
+- **A violet gradient band** across the top of a white card, the way their onboarding form
+  headers each step. Here it carries the live assessment progress instead of "Step 1 of 2".
+- **White rounded cards** (22px radius) on a light grey ground, with soft shadows.
+- **One typeface** — Plus Jakarta Sans, 400 to 800. No serif, no mono; numerals use
+  `font-variant-numeric: tabular-nums` so scores stay aligned in columns.
+- **Violet uppercase section labels**, bold and letterspaced.
+- **Pale-lavender notice boxes** with a violet hairline border.
+- **Inputs** at 10px radius with a hairline border and a violet focus ring, and red required
+  asterisks.
+
+Tokens live at the top of `assets/css/styles.css`:
+
+| Token | Light | Purpose |
+| --- | --- | --- |
+| `--violet` | `#7B2FF2` | primary accent |
+| `--violet-mark` | `#9B5CE6` | Handshake logo purple |
+| `--ink` | `#150B35` | Handshake wordmark near-black |
+| `--band-from` / `--band-to` | `#7B2FF2` → `#8F4BF6` | the gradient band |
+| `--hausmark-red` | `#DE1F26` | Hausmark mark only |
+
+Two notes on the token structure. `--band-from`, `--band-to` and `--btn-bg` are deliberately
+separate from the violet scale: that scale lightens for dark mode, which washed out any surface
+carrying white text. And Hausmark red is never used as UI chrome — only inside the Hausmark mark
+itself — so it can never be confused with the red "High risk" state.
+
+## Logos
+
+`assets/img/` holds four files: a light and a dark variant for each brand, swapped by CSS at
+`.brand-logo--light` / `.brand-logo--dark`. Replacing a logo means replacing files, not markup.
+
+**These are recreations, traced by eye from supplied images, not the real brand assets.** The
+Handshake mark's geometry is close and the Hausmark seal is approximate; both wordmarks fall back
+to system faces because an SVG loaded through `<img>` cannot use the page's webfont. Replace all
+four with the official files before this goes anywhere public.
 
 ## Sourcing of the Handshake content
 

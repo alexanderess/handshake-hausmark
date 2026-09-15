@@ -7,7 +7,7 @@
 <meta name="description" content="Score the interior designer you are about to sign with against the Hausmark RCCS framework — eleven weighted pillars, one number out of 100, and a critical red-flag check. Escrow payments in partnership with Handshake.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -25,188 +25,187 @@
     </div>
     <div class="header-tools">
       <button type="button" class="btn btn--ghost btn--sm" id="print">Print / save PDF</button>
-      <button type="button" class="btn btn--sm" id="copy">Copy summary</button>
+      <button type="button" class="btn btn--primary btn--sm" id="copy">Copy summary</button>
     </div>
   </div>
 </header>
 
 <main>
+  <div class="wrap shell">
 
-  <!-- ============================================================ hero -- -->
-  <section class="hero">
-    <div class="wrap hero__grid">
-      <div>
-        <p class="eyebrow">Hausmark RCCS · Homeowner self-assessment</p>
-        <h1>Score your ID <em>before you sign the quote.</em></h1>
-        <p class="hero__lede">
+    <!-- ================================================== assessment card -- -->
+    <section class="card" id="assess">
+
+      <!-- Handshake's signature gradient band, carrying the live progress the
+           way their onboarding form carries "Step 1 of 2". -->
+      <div class="band">
+        <p class="eyebrow">Hausmark RCCS &times; Handshake</p>
+        <h1>Score your ID before you sign the quote.</h1>
+        <p class="band__lede">
           You have sat through the consultations. You have a quotation in front of you and a
           deposit to pay. The Hausmark RCCS turns eleven things you already noticed into one
-          number out of 100 — and flags the two answers that should stop you regardless of
-          how well everything else scored.
+          number out of 100 &mdash; and flags the two answers that should stop you regardless
+          of how well everything else scored.
         </p>
-        <div class="hero__meta">
-          <div class="hero__stat"><b>11</b><span>weighted pillars</span></div>
-          <div class="hero__stat"><b>2</b><span>critical red flags</span></div>
-          <div class="hero__stat"><b>3</b><span>firms side by side</span></div>
-          <div class="hero__stat"><b>~4</b><span>minutes</span></div>
+
+        <div class="band__progress">
+          <div class="band__track">
+            <div class="band__fill" id="band-fill"></div>
+          </div>
+          <div class="band__meta">
+            <span id="band-step">0 of 11 answered</span>
+            <span class="band__score" id="band-score">&mdash; <small>/ 100</small></span>
+          </div>
         </div>
-        <p style="margin-top:26px">
-          <a class="btn btn--primary" href="#assess" id="start-cta">Start my assessment</a>
-        </p>
+
+        <div class="band__stats">
+          <div class="band__stat"><b>11</b><span>weighted pillars</span></div>
+          <div class="band__stat"><b>2</b><span>critical red flags</span></div>
+          <div class="band__stat"><b>3</b><span>firms side by side</span></div>
+          <div class="band__stat"><b>~4</b><span>minutes</span></div>
+        </div>
       </div>
 
-      <!-- The score guide, straight from the workbook. Shown up front because
-           the number is meaningless until you know where the lines fall. -->
-      <aside class="specimen" aria-label="What your score means">
-        <div class="specimen__bar">What your score means</div>
-        <div class="specimen__body">
-          <div class="bd-rows">
-            <div class="bd-row" style="grid-template-columns:76px 1fr">
-              <span class="mono" style="color:var(--good);font-weight:600">80–100</span>
-              <span><strong>Strong confidence.</strong> Likely a good choice.</span>
-            </div>
-            <div class="bd-row" style="grid-template-columns:76px 1fr">
-              <span class="mono" style="color:var(--warn);font-weight:600">65–79</span>
-              <span><strong>Proceed with caution.</strong> Investigate further before committing.</span>
-            </div>
-            <div class="bd-row" style="grid-template-columns:76px 1fr">
-              <span class="mono" style="color:var(--bad);font-weight:600">Below&nbsp;65</span>
-              <span><strong>High risk.</strong> Slow down before signing anything.</span>
-            </div>
-          </div>
-          <p style="margin:16px 0 0;font-size:12.5px;line-height:1.55;color:var(--text-2);border-top:1px solid var(--line-soft);padding-top:14px">
-            A high score does not override a critical red flag. Pillars <b>6</b> and <b>11</b> are
-            scored separately — if either comes back <em>No / Unsure</em>, investigate before you sign,
-            whatever the total says.
+      <div class="card-body">
+
+        <div class="notice">
+          Answer from your own experience of the consultations &mdash; there is no research to do.
+          <b>Your answers are saved in this browser only</b>, so you can close the page and come
+          back. Nothing is uploaded, and nothing is shared with any ID firm.
+        </div>
+
+        <div class="section__head" style="margin-top:32px">
+          <p class="eyebrow">The assessment</p>
+          <h2>Eleven pillars, weighted by what actually goes wrong.</h2>
+          <p>
+            Each pillar is worth a different share of the 100 points: how well they understood
+            your needs is worth 12, whether you truly understand the contract is worth 15, and
+            how easy they were to book is worth 5. Your score updates as you go.
           </p>
         </div>
-      </aside>
-    </div>
-  </section>
 
-  <!-- ====================================================== assessment -- -->
-  <section class="section" id="assess">
-    <div class="wrap">
-      <div class="section__head">
-        <p class="eyebrow">The assessment</p>
-        <h2>Eleven pillars, weighted by what actually goes wrong.</h2>
-        <p>
-          Answer from your own experience of the consultations — there is no research to do.
-          Each pillar is worth a different share of the 100 points: how well they understood
-          your needs is worth 12, whether you truly understand the contract is worth 15,
-          and how easy they were to book is worth 5. Your score updates as you go.
-        </p>
-      </div>
-
-      <div class="tool">
-        <div>
-          <!-- firm switcher -->
-          <div class="firms" role="tablist" aria-label="ID firms being assessed">
-            <div id="firm-tabs" style="display:flex;gap:6px;flex-wrap:wrap"></div>
-            <label class="visually-hidden" for="firm-name">Name of the ID firm you are assessing</label>
-            <input class="firm-name-input" id="firm-name" type="text" autocomplete="organization">
-            <button type="button" class="btn btn--sm" id="add-firm">+ Compare another</button>
-            <button type="button" class="btn btn--sm btn--ghost" id="remove-firm" hidden>Remove</button>
-          </div>
-
-          <div class="sample-note" id="sample-note">
-            <b>Example</b>
-            <span>This is a worked example so you can see how scoring behaves. Your first answer replaces it.</span>
-            <button type="button" class="btn btn--sm" id="clear-sample">Start mine</button>
-          </div>
-
-          <div class="pillars" id="pillars"></div>
-
-          <!-- breakdown -->
-          <div class="breakdown" id="breakdown" hidden>
-            <p class="eyebrow">Where your points went</p>
-            <h3 style="font-family:var(--font-display);font-size:1.4rem;font-weight:500;margin-top:9px">
-              Score breakdown
-            </h3>
-            <p style="color:var(--text-2);font-size:13.5px;margin:9px 0 0;max-width:62ch">
-              Bar length is what the pillar is worth; the filled part is what this firm earned.
-              The empty space is the points left on the table.
-            </p>
-            <div class="bd-scroll">
-              <div class="bd-rows" id="bd-rows"></div>
-            </div>
-            <p style="margin-top:16px;padding-top:14px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:13px">
-              <span style="letter-spacing:.05em;text-transform:uppercase;font-size:11.5px;font-weight:600;color:var(--text-3)">Total RCCS score</span>
-              <b class="mono" id="bd-total" style="font-size:15px">— / 100</b>
-            </p>
-          </div>
-
-          <!-- comparison -->
-          <div class="breakdown" id="compare" hidden>
-            <p class="eyebrow">Side by side</p>
-            <h3 style="font-family:var(--font-display);font-size:1.4rem;font-weight:500;margin-top:9px">
-              Your shortlist, compared
-            </h3>
-            <div class="bd-scroll" style="margin-top:16px">
-              <table class="compare-table">
-                <thead id="cmp-head"></thead>
-                <tbody id="cmp-body"></tbody>
-                <tfoot id="cmp-foot"></tfoot>
-              </table>
-            </div>
-            <p style="margin-top:12px;font-size:12px;color:var(--text-3)">
-              <span class="pip" data-v="10"></span> Yes / Good &nbsp;
-              <span class="pip" data-v="5"></span> Partially &nbsp;
-              <span class="pip" data-v="0"></span> No / Unsure &nbsp;
-              <span class="pip" data-v=""></span> Not answered &nbsp; · &nbsp; ⚑ marks a critical pillar
-            </p>
-          </div>
-        </div>
-
-        <!-- live verdict rail -->
-        <div class="verdict-col">
-          <div class="verdict" aria-live="polite">
-            <div class="verdict__top">
-              <div class="verdict__firm" id="v-firm">ID Firm A</div>
-              <div class="score-row">
-                <div class="score-num mono" id="v-score">—</div>
-                <div class="score-den">/ 100</div>
-              </div>
-              <div class="band" id="v-band">In progress</div>
-              <p class="band-detail" id="v-band-detail">Answer all 11 questions to see your result.</p>
-            </div>
-
-            <div class="progress">
-              <div class="progress__row">
-                <span>Progress</span>
-                <b id="v-progress-label">0 of 11 answered</b>
-              </div>
-              <div class="progress__track">
-                <div class="progress__fill" id="v-progress-fill" style="width:0%"></div>
+        <div class="tool">
+          <div>
+            <!-- firm switcher -->
+            <div class="firms">
+              <div class="firm-tabs" id="firm-tabs" role="tablist" aria-label="ID firms being assessed"></div>
+              <div class="firm-row">
+                <div>
+                  <label class="field-label" for="firm-name">Which ID firm are you assessing? <span class="req">*</span></label>
+                  <input class="input" id="firm-name" type="text" autocomplete="organization">
+                </div>
+                <button type="button" class="btn" id="add-firm">+ Compare another</button>
+                <button type="button" class="btn btn--ghost" id="remove-firm" hidden>Remove</button>
               </div>
             </div>
 
-            <div class="flagcheck" id="v-flagcheck" data-state="none">
-              <span class="flagcheck__dot" aria-hidden="true"></span>
-              <span>
-                <strong id="v-flag-title">Critical pillar check</strong>
-                <span id="v-flag-body">Answer pillars 6 and 11 to run this check.</span>
+            <div class="sample-note" id="sample-note">
+              <b>Example</b>
+              <span>A worked example, so you can see how scoring behaves. Your first answer replaces it.</span>
+              <button type="button" class="btn btn--sm" id="clear-sample">Start mine</button>
+            </div>
+
+            <div class="pillars" id="pillars"></div>
+
+            <!-- breakdown -->
+            <div class="subsection" id="breakdown" hidden>
+              <p class="eyebrow">Where your points went</p>
+              <h3>Score breakdown</h3>
+              <p>
+                Bar length is what the pillar is worth; the filled part is what this firm earned.
+                The empty space is the points left on the table.
+              </p>
+              <div class="bd-scroll">
+                <div class="bd-rows" id="bd-rows"></div>
+              </div>
+              <div class="bd-total">
+                <span>Total RCCS score</span>
+                <b id="bd-total">&mdash; / 100</b>
+              </div>
+            </div>
+
+            <!-- comparison -->
+            <div class="subsection" id="compare" hidden>
+              <p class="eyebrow">Side by side</p>
+              <h3>Your shortlist, compared</h3>
+              <div class="bd-scroll" style="margin-top:18px">
+                <table class="compare-table">
+                  <thead id="cmp-head"></thead>
+                  <tbody id="cmp-body"></tbody>
+                  <tfoot id="cmp-foot"></tfoot>
+                </table>
+              </div>
+              <p style="margin-top:14px;font-size:12.5px;color:var(--text-3)">
+                <span class="pip" data-v="10"></span> Yes / Good &nbsp;
+                <span class="pip" data-v="5"></span> Partially &nbsp;
+                <span class="pip" data-v="0"></span> No / Unsure &nbsp;
+                <span class="pip" data-v=""></span> Not answered &nbsp; &middot; &nbsp; &#9873; marks a critical pillar
+              </p>
+            </div>
+          </div>
+
+          <!-- live verdict rail -->
+          <div class="verdict-col">
+            <div class="verdict" aria-live="polite">
+              <div class="verdict__top">
+                <div class="verdict__firm" id="v-firm">ID Firm A</div>
+                <div class="score-row">
+                  <div class="score-num" id="v-score">&mdash;</div>
+                  <div class="score-den">/ 100</div>
+                </div>
+                <div class="band-pill" id="v-band">In progress</div>
+                <p class="band-detail" id="v-band-detail">Answer all 11 questions to see your result.</p>
+              </div>
+
+              <div class="progress">
+                <div class="progress__row">
+                  <span>Progress</span>
+                  <b id="v-progress-label">0 of 11 answered</b>
+                </div>
+                <div class="progress__track">
+                  <div class="progress__fill" id="v-progress-fill" style="width:0%"></div>
+                </div>
+              </div>
+
+              <div class="flagcheck" id="v-flagcheck" data-state="none">
+                <span class="flagcheck__dot" aria-hidden="true"></span>
+                <span>
+                  <strong id="v-flag-title">Critical pillar check</strong>
+                  <span id="v-flag-body">Answer pillars 6 and 11 to run this check.</span>
+                </span>
+              </div>
+
+              <div class="verdict__foot">
+                <button type="button" class="btn btn--sm btn--ghost" id="reset">Clear all</button>
+              </div>
+            </div>
+
+            <div class="nudge">
+              <b id="v-nudge-label">Answer next</b>
+              <span id="v-nudge-text">Pillar 6 &middot; Commitment Confidence carries 15 of the 100 points.</span>
+            </div>
+
+            <!-- What the number means, per the workbook's score guide. -->
+            <div class="nudge" style="background:var(--surface-2);border-color:var(--border)">
+              <b style="color:var(--text-3)">What your score means</b>
+              <span style="display:block;margin-top:6px">
+                <b style="color:var(--good);display:inline;font-size:13px;letter-spacing:0;text-transform:none">80&ndash;100</b>
+                Strong confidence &mdash; likely a good choice.<br>
+                <b style="color:var(--warn);display:inline;font-size:13px;letter-spacing:0;text-transform:none">65&ndash;79</b>
+                Proceed with caution &mdash; investigate further.<br>
+                <b style="color:var(--bad);display:inline;font-size:13px;letter-spacing:0;text-transform:none">Below 65</b>
+                High risk &mdash; slow down before signing.
               </span>
             </div>
-
-            <div class="verdict__foot">
-              <button type="button" class="btn btn--sm btn--ghost" id="reset">Clear all</button>
-            </div>
-          </div>
-
-          <div class="nudge">
-            <b id="v-nudge-label">Answer next</b>
-            <span id="v-nudge-text">Pillar 6 · Commitment Confidence carries 15 of the 100 points.</span>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
   <!-- ========================================================== escrow -- -->
-  <section class="section section--tint" id="escrow">
-    <div class="wrap">
-      <div class="section__head">
+    <section class="card" id="escrow">
+      <div class="card-body">
+        <div class="section__head">
         <p class="eyebrow">Pillar 9 · Escrow payment</p>
         <h2>Why the way you pay matters as much as who you hire.</h2>
       </div>
@@ -302,22 +301,18 @@
             </span>
           </div>
         </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ====================================================== disclaimer -- -->
-  <section class="section" style="padding-block:38px">
-    <div class="wrap">
-      <p class="disclaimer">
-        <strong style="color:var(--text-2)">A guide, not a verdict.</strong>
-        The RCCS reflects your own observations at the time of assessment. Use it alongside your
-        own due diligence, contract review and budget. It is a guide, not the sole basis for a
-        renovation decision. Your answers are saved in this browser only — nothing is uploaded.
-      </p>
-    </div>
-  </section>
+    <p class="disclaimer" style="margin:26px 4px 0">
+      <strong>A guide, not a verdict.</strong>
+      The RCCS reflects your own observations at the time of assessment. Use it alongside your
+      own due diligence, contract review and budget. It is a guide, not the sole basis for a
+      renovation decision.
+    </p>
 
+  </div>
 </main>
 
 <footer class="site-footer">

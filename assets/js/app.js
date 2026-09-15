@@ -280,6 +280,16 @@
     $('#v-progress-label').textContent = s.answered + ' of ' + PILLARS.length + ' answered';
     $('#v-progress-fill').style.width = (s.answered / PILLARS.length * 100) + '%';
 
+    /* The gradient band mirrors the rail, so progress stays visible at the top
+       of the page the way Handshake's onboarding form shows its step. */
+    $('#band-fill').style.width = (s.answered / PILLARS.length * 100) + '%';
+    $('#band-step').textContent = s.answered + ' of ' + PILLARS.length + ' answered';
+    $('#band-score').innerHTML = '';
+    $('#band-score').appendChild(document.createTextNode(s.answered ? fmt(s.total) : '\u2014'));
+    var den = el('small', null, '/ 100');
+    $('#band-score').appendChild(document.createTextNode(' '));
+    $('#band-score').appendChild(den);
+
     var fc = flagCheck(firm);
     var fcEl = $('#v-flagcheck');
     fcEl.dataset.state = fc.state;
@@ -424,12 +434,6 @@
       $('#firm-name').focus();
       document.getElementById('assess').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-
-    $('#start-cta').addEventListener('click', function (e) {
-      e.preventDefault();
-      if (state.firms[state.active].sample) startFresh();
-      else document.getElementById('assess').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
 
     $('#print').addEventListener('click', function () { window.print(); });
 

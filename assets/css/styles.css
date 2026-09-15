@@ -527,3 +527,45 @@ button { font: inherit; color: inherit; }
 
 .btn--danger { background: var(--bad-bg); border-color: var(--bad-line); color: var(--bad); }
 .btn--danger:hover { background: var(--bad); border-color: var(--bad); color: #fff; }
+
+/* Handshake mark closing the Safeguard box. */
+.safeguard__mark {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--violet-line);
+}
+.safeguard__mark .brand-logo { height: 26px; }
+
+/* Score guide, sitting under the breakdown total. */
+.score-guide { margin-top: 30px; padding-top: 24px; border-top: 1px solid var(--border); }
+.score-guide__rows { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+.score-guide__row {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  align-items: baseline;
+  gap: 14px;
+  padding: 11px 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  font-size: 13.5px;
+  color: var(--text-2);
+}
+.score-guide__row b { font-weight: 800; font-variant-numeric: tabular-nums; }
+.score-guide__row strong { color: var(--text); font-weight: 700; }
+.score-guide__row[data-band="strong"]  { background: var(--good-bg); border-color: var(--good-line); }
+.score-guide__row[data-band="strong"] b { color: var(--good); }
+.score-guide__row[data-band="caution"] { background: var(--warn-bg); border-color: var(--warn-line); }
+.score-guide__row[data-band="caution"] b { color: var(--warn); }
+.score-guide__row[data-band="risk"]    { background: var(--bad-bg);  border-color: var(--bad-line);  }
+.score-guide__row[data-band="risk"] b { color: var(--bad); }
+.score-guide__note { margin: 16px 0 0; font-size: 13px; line-height: 1.6; color: var(--text-3); max-width: 70ch; }
+
+/* Framework introduction, ahead of the assessment. */
+.rccs-intro { max-width: 70ch; padding-bottom: 32px; margin-bottom: 34px; border-bottom: 1px solid var(--border); }
+.rccs-intro h2 { margin-top: 13px; font-size: clamp(1.5rem, 1.1rem + 1.3vw, 1.95rem); font-weight: 700; }
+.rccs-intro p { color: var(--text-2); font-size: 15.5px; line-height: 1.68; margin: 16px 0 0; }
+
+@media (max-width: 680px) {
+  .score-guide__row { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+}

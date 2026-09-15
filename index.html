@@ -46,6 +46,27 @@
 
       <div class="card-body">
 
+        <div class="rccs-intro">
+          <p class="eyebrow">The Hausmark RCCS</p>
+          <h2>One score for the firm you are about to sign with.</h2>
+          <p>
+            The RCCS is Hausmark's framework for weighing up an interior designer before you
+            commit. It takes the eleven things that most often decide how a renovation turns out,
+            weights each one by how much it actually matters, and resolves them into a single
+            score out of 100.
+          </p>
+          <p>
+            You answer from your own experience of meeting the firm, so there is nothing to look
+            up and nothing to chase. Two of the eleven carry extra standing: whether you genuinely
+            understand the quotation and the contract, and what the firm's public record looks
+            like. If either comes back as a no, it is flagged on its own, whatever the total says.
+          </p>
+          <p>
+            Treat the number as a prompt to look harder rather than a verdict. It works alongside
+            your own reading of the quotation, the contract and your budget.
+          </p>
+        </div>
+
         <div class="section__head">
           <p class="eyebrow">The assessment</p>
           <h2>Eleven pillars, weighted by importance.</h2>
@@ -92,6 +113,26 @@
               <div class="bd-total">
                 <span>Total RCCS score</span>
                 <b id="bd-total">&mdash; / 100</b>
+              </div>
+
+              <!-- Score guide, per the workbook. -->
+              <div class="score-guide">
+                <p class="eyebrow">What your score means</p>
+                <div class="score-guide__rows">
+                  <div class="score-guide__row" data-band="strong">
+                    <b>80&ndash;100</b><span><strong>Strong confidence.</strong> Likely a good choice.</span>
+                  </div>
+                  <div class="score-guide__row" data-band="caution">
+                    <b>65&ndash;79</b><span><strong>Proceed with caution.</strong> Investigate further before committing.</span>
+                  </div>
+                  <div class="score-guide__row" data-band="risk">
+                    <b>Below 65</b><span><strong>High risk.</strong> Slow down before signing anything.</span>
+                  </div>
+                </div>
+                <p class="score-guide__note">
+                  A high score does not override a critical red flag. If pillar 6 or pillar 11
+                  comes back <em>No / Unsure</em>, investigate before you sign, whatever the total says.
+                </p>
               </div>
             </div>
 
@@ -150,19 +191,6 @@
                 <button type="button" class="btn btn--sm btn--ghost" id="reset">Clear all</button>
               </div>
             </div>
-
-            <!-- What the number means, per the workbook's score guide. -->
-            <div class="nudge" style="background:var(--surface-2);border-color:var(--border)">
-              <b style="color:var(--text-3)">What your score means</b>
-              <span style="display:block;margin-top:6px">
-                <b style="color:var(--good);display:inline;font-size:13px;letter-spacing:0;text-transform:none">80&ndash;100</b>
-                Strong confidence &mdash; likely a good choice.<br>
-                <b style="color:var(--warn);display:inline;font-size:13px;letter-spacing:0;text-transform:none">65&ndash;79</b>
-                Proceed with caution &mdash; investigate further.<br>
-                <b style="color:var(--bad);display:inline;font-size:13px;letter-spacing:0;text-transform:none">Below 65</b>
-                High risk &mdash; slow down before signing.
-              </span>
-            </div>
           </div>
         </div>
       </div>
@@ -216,6 +244,10 @@
               will not settle it for you. But your money is still in the account while that runs
               its course, and you have a dated record of every payment and approval.
             </p>
+            <div class="safeguard__mark">
+              <img class="brand-logo brand-logo--handshake" src="assets/img/handshake-logo.png"
+                   alt="Handshake" width="1401" height="186">
+            </div>
           </div>
         </div>
 

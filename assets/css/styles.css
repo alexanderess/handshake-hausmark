@@ -114,8 +114,6 @@ button { font: inherit; color: inherit; }
 .brand-logo--hausmark  { height: 38px; }
 .lockup__rule { width: 1px; height: 30px; background: var(--border); flex: none; }
 
-.card-head__tools { margin-left: auto; display: flex; align-items: center; gap: 8px; }
-
 .card-body { padding: var(--pad); }
 
 /* ------------------------------------------------------------- band ---- */
@@ -445,13 +443,6 @@ button { font: inherit; color: inherit; }
 .safeguard h3 { font-size: 1.22rem; font-weight: 700; color: var(--violet-700); }
 .safeguard p { margin-block: 12px 0; color: var(--text-2); line-height: 1.66; font-size: 15px; }
 
-.pillar9-callout {
-  display: flex; gap: 13px; align-items: flex-start;
-  margin-top: 24px; padding: 16px 18px;
-  border-radius: var(--radius-lg); background: var(--surface-2); border: 1px solid var(--border);
-  font-size: 13.5px; color: var(--text-2); line-height: 1.55;
-}
-.pillar9-callout b { color: var(--text); font-weight: 700; }
 
 /* ------------------------------------------------------------ footer --- */
 
@@ -496,7 +487,7 @@ button { font: inherit; color: inherit; }
 /* ------------------------------------------------------------- print --- */
 
 @media print {
-  .card-head__tools, .verdict__foot, .sample-note, .firm-tabs { display: none !important; }
+  .verdict__foot, .sample-note, .firm-tabs { display: none !important; }
   body { background: #fff; }
   .card { box-shadow: none; border: 1px solid #ddd; }
   .band { background: #6D28D9 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }

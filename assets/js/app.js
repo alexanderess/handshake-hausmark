@@ -481,51 +481,6 @@
       document.getElementById('assess').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    $('#print').addEventListener('click', function () { window.print(); });
-
-    $('#copy').addEventListener('click', function (e) {
-      var btn = e.currentTarget;
-      var firm = state.firms[state.active];
-      var s = scoreOf(firm);
-      var fc = flagCheck(firm);
-      var lines = [
-        'RCCS assessment — ' + (firm.name || 'ID Firm ' + String.fromCharCode(65 + state.active)),
-        'Score: ' + fmt(s.total) + ' / 100  (' + s.answered + ' of 11 answered)',
-        s.complete ? 'Verdict: ' + bandOf(s.total).verdict + ' — ' + bandOf(s.total).detail : 'Verdict: incomplete',
-        'Critical check: ' + fc.title + ' — ' + fc.body,
-        ''
-      ];
-      PILLARS.forEach(function (p) {
-        var a = firm.answers[p.n];
-        lines.push(p.n + '. ' + p.name + (p.critical ? ' (critical)' : '') + ': ' +
-          (a == null ? 'not answered' : ANSWER_LABELS[a]) +
-          '  [' + (a == null ? '—' : fmt(pointsFor(p, a))) + '/' + Math.round(p.weight * 100) + ']');
-      });
-      lines.push('', 'Hausmark RCCS framework · hausmark.com.sg', 'Escrow payments in partnership with Handshake · handshake.finance');
-
-      var text = lines.join('\n');
-      var done = function () {
-        var old = btn.textContent;
-        btn.textContent = 'Copied';
-        setTimeout(function () { btn.textContent = old; }, 1600);
-      };
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(done, function () { fallbackCopy(text, done); });
-      } else { fallbackCopy(text, done); }
-    });
-
-    function fallbackCopy(text, done) {
-      var ta = el('textarea');
-      ta.value = text;
-      ta.setAttribute('readonly', '');
-      ta.style.position = 'fixed';
-      ta.style.left = '-9999px';
-      document.body.appendChild(ta);
-      ta.select();
-      try { document.execCommand('copy'); done(); } catch (err) { /* no clipboard */ }
-      document.body.removeChild(ta);
-    }
-
     render();
   }
 

@@ -569,3 +569,27 @@ button { font: inherit; color: inherit; }
 @media (max-width: 680px) {
   .score-guide__row { grid-template-columns: minmax(0, 1fr); gap: 4px; }
 }
+
+/* Safeguard: the three protection rules. */
+.safeguard__lede { margin-top: 10px; font-weight: 600; color: var(--text); }
+
+.rules { list-style: none; margin: 20px 0 0; padding: 0; display: flex; flex-direction: column; gap: 18px; }
+.rules__item { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 15px; align-items: start; }
+.rules__icon {
+  width: 42px; height: 42px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  color: #fff;
+}
+.rules__icon svg { width: 21px; height: 21px; display: block; }
+.rules__icon[data-tone="violet"] { background: var(--violet-600); }
+.rules__icon[data-tone="orange"] { background: #F97316; }
+.rules__icon[data-tone="green"]  { background: #059669; }
+.rules__item h4 { font-size: 15.5px; font-weight: 700; color: var(--text); }
+.rules__item p { margin: 5px 0 0; font-size: 14px; line-height: 1.55; color: var(--text-2); }
+
+.safeguard__note {
+  margin-top: 22px; padding-top: 18px;
+  border-top: 1px solid var(--violet-line);
+  font-size: 13.5px; line-height: 1.6; color: var(--text-3);
+}

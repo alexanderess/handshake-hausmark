@@ -6,7 +6,7 @@ const PILLARS = [
     n: 1, name: 'Getting Started', weight: 0.05, critical: false,
     question: 'Was the process of getting started easy and welcoming?',
     levels: {
-      10: 'Prompt and welcoming, accommodated your scheduling, gave you clear next steps',
+      10: 'Prompt, welcoming, accommodates scheduling, clear next step',
       5:  'Some delays, or the next steps were unclear',
       0:  'You felt rushed or confused, and they were not responsive'
     }
@@ -24,8 +24,8 @@ const PILLARS = [
     n: 3, name: 'Professional Advice', weight: 0.12, critical: false,
     question: 'Did the designer seem knowledgeable and able to bring your ideas to life?',
     levels: {
-      10: 'Provided renovation tips and flagged potential challenges honestly',
-      5:  'Somewhat useful advice, but nothing you could not have found yourself',
+      10: 'Provided renovation tips, including highlighting potential challenges',
+      5:  'Somewhat useful advices',
       0:  'Lacked knowledge, or it felt like a hard sell'
     }
   },
@@ -34,7 +34,7 @@ const PILLARS = [
     question: 'Can you picture yourself at home in the space they designed?',
     levels: {
       10: 'Original ideas with a practical layout that met your requirements',
-      5:  'Some good ideas, but not fully practical in places',
+      5:  'Some good ideas, not fully practical in some cases',
       0:  'Recycled ideas, and the design does not suit your needs'
     }
   },
@@ -52,7 +52,7 @@ const PILLARS = [
     question: 'Do you understand, and are you comfortable with, the quotation and every clause in the renovation contract?',
     levels: {
       10: 'Itemised quote, clear specs, unambiguous clauses, warranties clearly spelled out',
-      5:  'Many KIV items in the quote, some unclear clauses (clarified verbally), only a verbal warranty commitment',
+      5:  'Many KIV items in quote, some unclear clauses but clarified only under verbal warranty commitment',
       0:  'Poorly detailed and vague quote, terms unclear and not transparently explained'
     }
   },

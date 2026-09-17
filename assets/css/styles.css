@@ -539,19 +539,22 @@ button { font: inherit; color: inherit; }
 
 
 /* ============================================================== escrow ===
-   Pillar 9 panel. Palette and type are the supplied design's own — a deeper
-   violet (#5B2BD9) than the page accent, with Outfit for display figures.
+   Pillar 9 panel. Layout and type follow the supplied design, but the colours
+   are the page's own violet scale rather than the design's deeper violet, so
+   the panel matches the rest of the page. Outfit carries the display figures.
    ======================================================================== */
 
 .escrow {
-  --esc-violet: #5B2BD9;
-  --esc-deep:   #4A1FB8;
-  --esc-tint:   #F8F5FF;
-  --esc-track:  #E4D9FF;
-  --esc-dash:   #CFC7E4;
-  --esc-ink:    #16162B;
-  --esc-grey:   #55556E;
-  --esc-grey-2: #7A7A92;
+  /* The page's own violet scale, so this panel matches the rest of the page. */
+  --esc-violet: var(--violet-600);
+  --esc-deep:   var(--violet-700);
+  --esc-tint:   var(--violet-50);
+  --esc-track:  var(--violet-100);
+  --esc-dash:   #D7CEEE;            /* violet-tinted, dark enough to read dashed */
+  --esc-ink:    var(--text);
+  --esc-grey:   var(--text-2);
+  --esc-grey-2: #6B7280;            /* carries white text on the muted bar */
+  --esc-bar:    #221C3A;            /* dark ground for the closing bar */
   --font-display: Outfit, 'Plus Jakarta Sans', system-ui, sans-serif;
 
   display: flex;
@@ -579,7 +582,7 @@ button { font: inherit; color: inherit; }
 .free-pill {
   display: inline-flex; align-items: center; gap: 10px;
   padding: 12px 20px;
-  background: #F1EBFF;
+  background: var(--violet-100);
   border-radius: 999px;
   font-size: 15px; font-weight: 700;
   color: var(--esc-deep);
@@ -630,7 +633,7 @@ button { font: inherit; color: inherit; }
 
 .cover__bar--solid { background: var(--esc-grey-2); }
 .cover__bar--none { border: 1.5px dashed var(--esc-dash); }
-.cover__bar--none span { color: #8E86A6; font-weight: 600; }
+.cover__bar--none span { color: var(--text-3); font-weight: 600; }
 
 .cover__bar--track { background: var(--esc-track); flex-direction: column; justify-content: flex-end; overflow: hidden; }
 .cover__bar--track i {
@@ -646,8 +649,8 @@ button { font: inherit; color: inherit; }
 .cover__legend {
   display: flex; align-items: flex-start; gap: 10px;
   margin: 0; padding-top: 18px;
-  border-top: 1px solid #E7DFFA;
-  font-size: 13px; line-height: 1.5; color: #6B6B84;
+  border-top: 1px solid var(--violet-line);
+  font-size: 13px; line-height: 1.5; color: var(--text-2);
 }
 .cover__key { flex: none; width: 13px; height: 13px; background: var(--esc-violet); border-radius: 4px; margin-top: 3px; }
 
@@ -656,7 +659,7 @@ button { font: inherit; color: inherit; }
 .escrow__cta {
   display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap;
   padding: 24px 28px;
-  background: var(--esc-ink);
+  background: var(--esc-bar);
   border-radius: 20px;
 }
 .escrow__cta strong {
@@ -665,16 +668,16 @@ button { font: inherit; color: inherit; }
   font-size: 21px; font-weight: 600; color: #fff;
   margin-bottom: 6px;
 }
-.escrow__cta span { font-size: 15px; color: #B9B4D4; }
+.escrow__cta span { font-size: 15px; color: #C4BCE4; }
 .escrow__btn {
   flex-shrink: 0;
   padding: 14px 26px;
-  background: #fff; color: var(--esc-ink);
+  background: #fff; color: var(--esc-bar);
   border-radius: 999px;
   font-size: 15px; font-weight: 700; text-decoration: none;
   transition: background .14s ease;
 }
-.escrow__btn:hover { background: #E4D9FF; color: var(--esc-deep); }
+.escrow__btn:hover { background: var(--violet-100); color: var(--esc-deep); }
 
 .escrow .subsection .eyebrow { color: var(--esc-violet); }
 

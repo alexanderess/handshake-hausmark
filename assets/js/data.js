@@ -6,7 +6,7 @@ const PILLARS = [
     n: 1, name: 'Getting Started', weight: 0.05, critical: false,
     question: 'Was the process of getting started easy and welcoming?',
     levels: {
-      10: 'Prompt, welcoming, accommodates scheduling, clear next step',
+      10: 'Prompt, welcoming, accommodative scheduling, clear next step',
       5:  'Some delays, or the next steps were unclear',
       0:  'You felt rushed or confused, and they were not responsive'
     }

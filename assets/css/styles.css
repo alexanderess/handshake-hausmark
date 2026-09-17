@@ -642,6 +642,7 @@ button { font: inherit; color: inherit; }
   background: var(--esc-violet);
   font-style: normal;
   width: 100%;
+  height: var(--fill);
 }
 
 .cover__stages { display: flex; gap: 6px; }
@@ -682,10 +683,53 @@ button { font: inherit; color: inherit; }
 
 .escrow .subsection .eyebrow { color: var(--esc-violet); }
 
-@media (max-width: 680px) {
+/* Narrow screens: the five stages stop being columns and become stacked rows,
+   each labelled in place, so the chart fits the width instead of scrolling. */
+@media (max-width: 760px) {
   .cover { padding: 24px 20px; border-radius: 18px; }
   .escrow__aside { align-items: flex-start; }
   .escrow__cta { padding: 20px; }
+
+  .cover__scroll { overflow-x: visible; }
+  .cover__inner { min-width: 0; }
+
+  /* Room above the first bar for its label, which sits over the bar. */
+  .cover__row { gap: 28px; }
+  .cover__bars { flex-direction: column; height: auto; gap: 26px; }
+
+  .cover__bar {
+    flex: none;
+    height: 34px;
+    position: relative;
+    border-radius: 8px;
+    justify-content: flex-start;
+  }
+  /* The stage name sits above its own bar. */
+  .cover__bar::before {
+    content: attr(data-stage);
+    position: absolute;
+    left: 0; bottom: calc(100% + 5px);
+    white-space: nowrap;
+    font-size: 12.5px; font-weight: 600;
+    color: var(--esc-grey);
+  }
+  .cover__bar > span { padding-left: 14px; }
+  .cover__bar--none { justify-content: flex-start; }
+
+  /* The track clips its fill on desktop; on mobile that clipping would also
+     swallow the label sitting above the bar. */
+  .cover__bar--track { flex-direction: row; justify-content: flex-start; overflow: visible; }
+  .cover__bar--track i {
+    width: var(--fill);
+    height: 100%;
+    min-width: 46px;
+    justify-content: flex-start;
+    padding-left: 14px;
+    border-radius: 8px;
+  }
+
+  /* The labels moved onto the bars, so the shared axis row is redundant. */
+  .cover__stages { display: none; }
 }
 
 /* Milestone flow. The step numbers come from a CSS counter, so these rules are

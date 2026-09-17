@@ -76,7 +76,7 @@ const PILLARS = [
   },
   {
     n: 9, name: 'Escrow Payment', weight: 0.05, critical: false,
-    question: 'Is this ID onboarded to, or willing to onboard, an escrow payment arrangement?',
+    question: 'Is this ID onboarded to, or willing to onboard, an escrow payment arrangement (e.g. Handshake)?',
     levels: {
       10: 'Already onboarded, or willing to use an escrow payment scheme',
       5:  'Not onboarded, but open to discussion with conditions',

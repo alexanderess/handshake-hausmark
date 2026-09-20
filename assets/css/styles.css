@@ -847,10 +847,17 @@ button { font: inherit; color: inherit; }
   display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 22px;
 }
 .hm-features li {
+  position: relative;
   display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 12px; align-items: center;
   font-size: 13px; line-height: 1.45; color: var(--text-2);
 }
-.hm-features li + li { padding-left: 22px; border-left: 1px solid var(--border); }
+/* The divider is drawn in the gap rather than padded inside the cell, so these
+   columns line up with the step columns above instead of sitting 22px right. */
+.hm-features li + li::before {
+  content: "";
+  position: absolute; left: -11px; top: 0; bottom: 0;
+  width: 1px; background: var(--border);
+}
 .hm-features svg { width: 25px; height: 25px; color: var(--text); }
 
 /* --- closing bar ------------------------------------------------------ */
@@ -876,7 +883,7 @@ button { font: inherit; color: inherit; }
 @media (max-width: 1020px) {
   .hm-steps, .hm-features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hm-step:not(:last-child)::after { display: none; }
-  .hm-features li + li { padding-left: 0; border-left: 0; }
+  .hm-features li + li::before { display: none; }
 }
 
 @media (max-width: 680px) {

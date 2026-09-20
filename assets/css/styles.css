@@ -788,7 +788,7 @@ button { font: inherit; color: inherit; }
 
 /* --- hero ------------------------------------------------------------- */
 
-.hm-hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 44px; align-items: center; }
+.hm-hero { display: block; }
 
 .hm-kicker { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 0; }
 .hm-kicker span {
@@ -799,41 +799,21 @@ button { font: inherit; color: inherit; }
 
 .hm-hero__h2 {
   margin: 0;
-  font-size: clamp(2rem, 1.2rem + 2.6vw, 3.3rem);
-  font-weight: 800; line-height: 1.06; letter-spacing: -.025em;
+  font-size: clamp(2rem, 1.15rem + 3.4vw, 4rem);
+  font-weight: 800; line-height: 1.05; letter-spacing: -.028em;
   color: var(--text);
 }
 .hm-hero__h2 em { font-style: normal; color: var(--brand-600); }
 
-.hm-hero__lede { margin: 22px 0 0; font-size: 16.5px; line-height: 1.62; color: var(--text-2); max-width: 60ch; }
+.hm-hero__lede { margin: 24px 0 0; font-size: 17px; line-height: 1.62; color: var(--text-2); max-width: 78ch; }
 .hm-hero__lede strong { color: var(--text); font-weight: 700; }
-
-.hm-hero__media { margin: 0; position: relative; }
-.hm-hero__media img { display: block; width: 100%; height: auto; border-radius: var(--radius-lg); }
-.hm-hero__media figcaption {
-  margin-top: 18px; padding-top: 16px;
-  border-top: 2px solid var(--brand-600);
-  width: max-content; max-width: 100%;
-  font-size: 12px; font-weight: 700;
-  letter-spacing: .12em; text-transform: uppercase;
-  line-height: 1.7; color: var(--text-2);
-}
 
 /* --- process ---------------------------------------------------------- */
 
 .hm-process { border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; background: var(--surface-2); }
-.hm-process__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 28px; flex-wrap: wrap; margin-bottom: 30px; }
+.hm-process__head { margin-bottom: 30px; }
 .hm-process__head h3 { margin-top: 11px; font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.1rem); font-weight: 800; letter-spacing: -.022em; }
 .hm-process__head h3 em { font-style: normal; color: var(--brand-600); }
-.hm-process__note {
-  margin: 0; padding-left: 46px; position: relative;
-  font-size: 13.5px; color: var(--text-2);
-}
-.hm-process__note::before {
-  content: ""; position: absolute; left: 0; top: .7em;
-  width: 32px; height: 2px; background: var(--brand-600);
-}
-
 .hm-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 22px; }
 .hm-step { position: relative; }
 /* The rule between steps reads as one continuous process. */
@@ -848,13 +828,17 @@ button { font: inherit; color: inherit; }
   position: relative; z-index: 1;
 }
 .hm-step__icon svg { width: 25px; height: 25px; }
+/* Number and title sit on one centred row; the number shares its left edge
+   with the body text beneath, so the column reads as one aligned block. */
+.hm-step__head { display: flex; align-items: center; gap: 10px; margin-top: 16px; }
 .hm-step__n {
-  display: inline-grid; place-items: center;
-  width: 22px; height: 22px; margin: 16px 8px 0 0; vertical-align: middle;
+  flex: none;
+  display: grid; place-items: center;
+  width: 24px; height: 24px;
   border-radius: 50%; background: var(--brand-50); color: var(--brand-700);
-  font-size: 11.5px; font-weight: 700;
+  font-size: 12px; font-weight: 700; line-height: 1;
 }
-.hm-step h4 { display: inline; font-size: 15.5px; font-weight: 700; color: var(--text); }
+.hm-step h4 { font-size: 15.5px; font-weight: 700; color: var(--text); line-height: 1.25; }
 .hm-step p { margin: 10px 0 0; font-size: 13.5px; line-height: 1.55; color: var(--text-2); }
 
 .hm-features {
@@ -890,7 +874,6 @@ button { font: inherit; color: inherit; }
 .hm-cta__btn:hover { background: var(--brand-700); color: #fff; }
 
 @media (max-width: 1020px) {
-  .hm-hero { grid-template-columns: minmax(0, 1fr); gap: 30px; }
   .hm-steps, .hm-features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .hm-step:not(:last-child)::after { display: none; }
   .hm-features li + li { padding-left: 0; border-left: 0; }

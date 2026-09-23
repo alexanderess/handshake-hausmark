@@ -892,3 +892,7 @@ button { font: inherit; color: inherit; }
   .hm-cta { padding: 22px; }
   .hm-kicker span + span { padding-left: 0; border-left: 0; }
 }
+
+/* Optional note under a pillar question, e.g. where to check accreditation. */
+.pillar__note { margin: 8px 0 0; font-size: 13px; line-height: 1.5; color: var(--text-2); }
+.pillar__note a { color: var(--brand-600); font-weight: 600; }

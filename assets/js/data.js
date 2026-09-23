@@ -13,7 +13,7 @@ const PILLARS = [
   },
   {
     n: 2, name: 'Understand Your Needs', weight: 0.12, critical: false,
-    question: 'Did the designer really listen to what you want and need?',
+    question: 'Did the ID take the time to listen to and understand your needs, lifestyle and renovation requirements?',
     levels: {
       10: 'Asked about your live-in profile and requirements, listened patiently and took notes',
       5:  'Asked some questions, but did not go deep',
@@ -22,7 +22,7 @@ const PILLARS = [
   },
   {
     n: 3, name: 'Professional Advice', weight: 0.12, critical: false,
-    question: 'Did the designer seem knowledgeable and able to bring your ideas to life?',
+    question: 'Was the ID knowledgeable, honest and willing to share practical renovation advice, such as cost-saving tips and pitfalls to avoid?',
     levels: {
       10: 'Provided renovation tips, including highlighting potential challenges',
       5:  'Somewhat useful advices',
@@ -31,7 +31,7 @@ const PILLARS = [
   },
   {
     n: 4, name: 'Design Fit', weight: 0.11, critical: false,
-    question: 'Can you picture yourself at home in the space they designed?',
+    question: 'Based on the ID\u2019s proposed layout design, can you see yourself living comfortably in the space they designed?',
     levels: {
       10: 'Original ideas with a practical layout that met your requirements',
       5:  'Some good ideas, not fully practical in some cases',
@@ -40,7 +40,7 @@ const PILLARS = [
   },
   {
     n: 5, name: 'Project Monitoring', weight: 0.11, critical: false,
-    question: 'Do you feel the renovation work will be supervised, and that you will be kept updated as it progresses?',
+    question: 'Based on the ID\u2019s explanation and project management system, are you confident your renovation will be properly supervised and that you will receive regular progress updates?',
     levels: {
       10: 'Dedicated supervision (e.g. CCTV, site management) and fixed, routine updates',
       5:  'Non-committal about how they monitor the site and update you',
@@ -52,8 +52,8 @@ const PILLARS = [
     question: 'Do you understand, and are you comfortable with, the quotation and every clause in the renovation contract?',
     levels: {
       10: 'Itemised quote, clear specs, unambiguous clauses, warranties clearly spelled out',
-      5:  'Many KIV items in quote, some unclear clauses but clarified only under verbal warranty commitment',
-      0:  'Poorly detailed and vague quote, terms unclear and not transparently explained'
+      5:  'Some \u201CFOC\u201D or \u201CKIV\u201D items are included, with unclear T&Cs and/or key commitments made verbally on matters such as after-sales service, warranties, design amendments or payment milestones.',
+      0:  'Poorly detailed or vague quotations, with lump-sum items, unclear terms and conditions, or clauses the ID cannot clearly explain.'
     }
   },
   {
@@ -85,11 +85,12 @@ const PILLARS = [
   },
   {
     n: 10, name: 'Hausmark Confidence', weight: 0.10, critical: false,
-    question: 'Has this ID obtained a Hausmark Seal?',
+    question: 'Has the ID earned the Hausmark Seal or demonstrated willingness to undergo voluntary independent assessment?',
+    note: { before: 'Check accredited IDs at ', href: 'https://www.hausmark.com.sg', label: 'www.hausmark.com.sg', after: '.' },
     levels: {
-      10: 'Hausmark Accredited ID (holds the Hausmark Seal)',
-      5:  'Hausmark Accredited ID (with aspiring award)',
-      0:  'No Hausmark accreditation'
+      10: 'Hausmark Accredited (Seal Award), or willing to voluntarily undergo an independent Hausmark Assessment. For a free Hausmark assessment, please notify us at wecanhelp@hausmark.com.sg.',
+      5:  'Hausmark Accredited (Aspiring Award), or hesitant to undergo a voluntary Hausmark Assessment.',
+      0:  'No Hausmark Accreditation or unwilling to undergo voluntary Hausmark Assessment.'
     }
   },
   {

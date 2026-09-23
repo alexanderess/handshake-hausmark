@@ -115,6 +115,21 @@
       if (p.critical) nameRow.appendChild(el('span', 'flag', '⚑ Critical'));
       titles.appendChild(nameRow);
       titles.appendChild(el('p', 'pillar__q', p.question));
+
+      /* A pillar may carry a note under its question. It sits outside the
+         option buttons so any link in it stays clickable. */
+      if (p.note) {
+        var note = el('p', 'pillar__note');
+        note.appendChild(document.createTextNode(p.note.before));
+        var a = el('a', null, p.note.label);
+        a.href = p.note.href;
+        a.rel = 'noopener';
+        a.target = '_blank';
+        note.appendChild(a);
+        if (p.note.after) note.appendChild(document.createTextNode(p.note.after));
+        titles.appendChild(note);
+      }
+
       head.appendChild(titles);
 
       var w = el('div', 'pillar__weight');

@@ -86,9 +86,15 @@ const PILLARS = [
   {
     n: 10, name: 'Hausmark Confidence', weight: 0.10, critical: false,
     question: 'Has the ID earned the Hausmark Seal or demonstrated willingness to undergo voluntary independent assessment?',
-    note: { before: 'Check accredited IDs at ', href: 'https://www.hausmark.com.sg', label: 'www.hausmark.com.sg', after: '.' },
+    note: [
+      { text: 'Check accredited IDs at ' },
+      { href: 'https://www.hausmark.com.sg', label: 'www.hausmark.com.sg' },
+      { text: '. For a free Hausmark assessment, please notify us at ' },
+      { href: 'mailto:wecanhelp@hausmark.com.sg', label: 'wecanhelp@hausmark.com.sg' },
+      { text: '.' }
+    ],
     levels: {
-      10: 'Hausmark Accredited (Seal Award), or willing to voluntarily undergo an independent Hausmark Assessment. For a free Hausmark assessment, please notify us at wecanhelp@hausmark.com.sg.',
+      10: 'Hausmark Accredited (Seal Award), or willing to voluntarily undergo an independent Hausmark Assessment.',
       5:  'Hausmark Accredited (Aspiring Award), or hesitant to undergo a voluntary Hausmark Assessment.',
       0:  'No Hausmark Accreditation or unwilling to undergo voluntary Hausmark Assessment.'
     }

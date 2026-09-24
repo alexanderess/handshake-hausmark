@@ -120,13 +120,20 @@
          option buttons so any link in it stays clickable. */
       if (p.note) {
         var note = el('p', 'pillar__note');
-        note.appendChild(document.createTextNode(p.note.before));
-        var a = el('a', null, p.note.label);
-        a.href = p.note.href;
-        a.rel = 'noopener';
-        a.target = '_blank';
-        note.appendChild(a);
-        if (p.note.after) note.appendChild(document.createTextNode(p.note.after));
+        p.note.forEach(function (part) {
+          if (part.href) {
+            var a = el('a', null, part.label);
+            a.href = part.href;
+            /* A mailto should open in the mail client, not a new tab. */
+            if (part.href.indexOf('mailto:') !== 0) {
+              a.rel = 'noopener';
+              a.target = '_blank';
+            }
+            note.appendChild(a);
+          } else {
+            note.appendChild(document.createTextNode(part.text));
+          }
+        });
         titles.appendChild(note);
       }
 
